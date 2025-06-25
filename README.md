@@ -41,11 +41,10 @@ I've also added features that provide diversity in appearance to several globall
 
    ```bash
    .env.local
-   {
     NEXT_PUBLIC_API_URL=http://localhost:3001/api
-    NEXT_PUBLIC_RICK_AND_MORTY_API_URL=https:// rickandmortyapi.com/api
+    NEXT_PUBLIC_RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
     NODE_ENV=development
-   }
+   
    ```
 
 3. **Run development server:**
