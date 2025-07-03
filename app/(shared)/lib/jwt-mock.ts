@@ -2,7 +2,7 @@ import { User } from "../types/auth";
 
 const TOKEN_KEY = "auth_token";
 
-// Simulamos usuarios válidos
+// Simular usuarios válidos
 const VALID_USERS = [
   {
     id: "1",
@@ -20,7 +20,7 @@ const VALID_USERS = [
   },
 ];
 
-// Simulamos la creación de un JWT
+// Simular la creación de un JWT
 export function createMockJWT(user: User): string {
   const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
   const payload = btoa(
@@ -37,7 +37,7 @@ export function createMockJWT(user: User): string {
   return `${header}.${payload}.${signature}`;
 }
 
-// Validamos credenciales
+// Validar credenciales
 export function validateCredentials(
   email: string,
   password: string,
@@ -52,7 +52,7 @@ export function validateCredentials(
   return null;
 }
 
-// Verificamos si el token es válido
+// Verificar si el token es válido
 export function verifyMockJWT(token: string): User | null {
   try {
     const [, payloadBase64] = token.split(".");

@@ -2,13 +2,11 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { clearAllMocks, mockUser } from "@/__tests__/utils/test-utils";
 import ProtectedRoute from "../ProtectedRoute";
 
-// Mock the useAuth hook
 const mockUseAuth = jest.fn();
 jest.mock("../../hooks/useAuth", () => ({
   useAuth: () => mockUseAuth(),
 }));
 
-// Mock next/navigation
 const mockPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -85,7 +83,6 @@ describe("ProtectedRoute Component", () => {
   });
 
   it("should not redirect when authenticated even if loading initially was true", async () => {
-    // Start with loading state
     mockUseAuth.mockReturnValue({
       isAuthenticated: false,
       isLoading: true,
@@ -101,7 +98,6 @@ describe("ProtectedRoute Component", () => {
 
     expect(screen.getByTestId("spin-loading")).toBeInTheDocument();
 
-    // Update to authenticated state
     mockUseAuth.mockReturnValue({
       isAuthenticated: true,
       isLoading: false,

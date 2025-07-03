@@ -2,13 +2,11 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { clearAllMocks, mockUser } from "@/__tests__/utils/test-utils";
 import RootPage from "../page";
 
-// Mock useAuth
 const mockUseAuth = jest.fn();
 jest.mock("../(shared)/hooks/useAuth", () => ({
   useAuth: () => mockUseAuth(),
 }));
 
-// Mock useRouter
 const mockUseRouterPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter() {
@@ -95,12 +93,10 @@ describe("RootPage Component", () => {
       expect(mockUseRouterPush).toHaveBeenCalledWith("/home");
     });
 
-    // After redirect, component should render null (nothing visible)
     expect(container.firstChild).toBeNull();
   });
 
   it("should handle auth state transitions correctly", async () => {
-    // Start with loading
     mockUseAuth.mockReturnValue({
       isAuthenticated: false,
       isLoading: true,
@@ -113,7 +109,6 @@ describe("RootPage Component", () => {
     expect(screen.getByTestId("auth-loading-spin")).toBeInTheDocument();
     expect(mockUseRouterPush).not.toHaveBeenCalled();
 
-    // Transition to authenticated
     mockUseAuth.mockReturnValue({
       isAuthenticated: true,
       isLoading: false,
@@ -131,7 +126,6 @@ describe("RootPage Component", () => {
   it("should handle multiple state changes without memory leaks", async () => {
     const { rerender } = render(<RootPage />);
 
-    // Loading state
     mockUseAuth.mockReturnValue({
       isAuthenticated: false,
       isLoading: true,
@@ -140,7 +134,6 @@ describe("RootPage Component", () => {
     });
     rerender(<RootPage />);
 
-    // Not authenticated
     mockUseAuth.mockReturnValue({
       isAuthenticated: false,
       isLoading: false,
@@ -153,7 +146,6 @@ describe("RootPage Component", () => {
       expect(mockUseRouterPush).toHaveBeenCalledWith("/login");
     });
 
-    // Clear calls and test authenticated state
     mockUseRouterPush.mockClear();
     mockUseAuth.mockReturnValue({
       isAuthenticated: true,

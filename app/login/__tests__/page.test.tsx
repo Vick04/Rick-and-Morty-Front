@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { clearAllMocks } from "@/__tests__/utils/test-utils";
 import LoginPage from "../page";
 
-// Mock the useAuth hook
 const mockLogin = jest.fn();
 const mockUseAuth = jest.fn();
 
@@ -11,7 +10,6 @@ jest.mock("../../(shared)/hooks/useAuth", () => ({
   useAuth: () => mockUseAuth(),
 }));
 
-// Mock useRouter
 const mockUseRouterPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter() {
@@ -30,7 +28,6 @@ describe("LoginPage Component", () => {
     mockUseAuth.mockClear();
     mockUseRouterPush.mockClear();
 
-    // Default mock return value
     mockUseAuth.mockReturnValue({
       login: mockLogin,
       isLoading: false,
@@ -176,7 +173,6 @@ describe("LoginPage Component", () => {
     const passwordInput = screen.getByTestId(/password/i);
     const submitButton = screen.getByRole("button", { name: /ingresar/i });
 
-    // First failed attempt
     await user.type(emailInput, "wrong@example.com");
     await user.type(passwordInput, "wrongpassword");
     await user.click(submitButton);
@@ -185,7 +181,6 @@ describe("LoginPage Component", () => {
       expect(screen.getByText(/credenciales inválidas/i)).toBeInTheDocument();
     });
 
-    // Clear and try again
     await user.clear(emailInput);
     await user.clear(passwordInput);
     await user.type(emailInput, "admin@example.com");

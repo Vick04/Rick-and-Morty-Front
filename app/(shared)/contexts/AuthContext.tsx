@@ -21,7 +21,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isLoading: true,
   });
 
-  // Verificar autenticación al cargar la app
   useEffect(() => {
     checkAuthOnLoad();
   }, []);
@@ -54,7 +53,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (credentials: LoginCredentials): Promise<boolean> => {
     setAuthState((prev) => ({ ...prev, isLoading: true }));
 
-    //Simulating delay
     await new Promise((resolve) => setTimeout(resolve, 4000));
 
     const user = validateCredentials(credentials.email, credentials.password);

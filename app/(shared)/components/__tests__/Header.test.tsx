@@ -6,7 +6,6 @@ import {
 } from "@/__tests__/utils/test-utils";
 import Header from "@/app/(shared)/components/Header";
 
-// Mock the useAuth hook
 const mockUseAuth = jest.fn();
 const mockLogout = jest.fn();
 
@@ -14,7 +13,6 @@ jest.mock("../../hooks/useAuth", () => ({
   useAuth: () => mockUseAuth(),
 }));
 
-// Mock next/navigation
 const mockPush = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter: () => ({

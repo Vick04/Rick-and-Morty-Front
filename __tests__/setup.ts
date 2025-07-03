@@ -1,7 +1,7 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Mock next/navigation
-jest.mock('next/navigation', () => ({
+jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: jest.fn(),
     replace: jest.fn(),
@@ -10,16 +10,9 @@ jest.mock('next/navigation', () => ({
     refresh: jest.fn(),
     prefetch: jest.fn(),
   }),
-  usePathname: () => '/',
+  usePathname: () => "/",
   useSearchParams: () => new URLSearchParams(),
 }));
-
-// Mock window.location.href
-delete (window as any).location;
-window.location = {
-  ...window.location,
-  href: '',
-};
 
 // Mock localStorage
 const localStorageMock = {
@@ -31,7 +24,7 @@ const localStorageMock = {
   key: jest.fn(),
 };
 
-Object.defineProperty(window, 'localStorage', {
+Object.defineProperty(window, "localStorage", {
   value: localStorageMock,
   writable: true,
 });
@@ -41,8 +34,8 @@ const originalError = console.error;
 beforeAll(() => {
   console.error = (...args: any[]) => {
     if (
-      typeof args[0] === 'string' &&
-      args[0].includes('Warning: ReactDOM.render is no longer supported')
+      typeof args[0] === "string" &&
+      args[0].includes("Warning: ReactDOM.render is no longer supported")
     ) {
       return;
     }

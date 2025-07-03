@@ -19,7 +19,6 @@ const RootPage = () => {
     }
   }, [isAuthenticated, isLoading]);
 
-  // Mostrar loading mientras se verifica la autenticación
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">

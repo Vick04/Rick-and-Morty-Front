@@ -2,7 +2,6 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 import { getStoredToken } from "@/app/(shared)/lib/jwt-mock";
 
-// Crear instancia de Axios
 export const apiClient: AxiosInstance = axios.create({
   timeout: 10000,
   headers: {
@@ -10,7 +9,6 @@ export const apiClient: AxiosInstance = axios.create({
   },
 });
 
-// Interceptor de Request - Inyectar token automáticamente
 apiClient.interceptors.request.use(
   (config) => {
     const token = getStoredToken();
@@ -24,7 +22,6 @@ apiClient.interceptors.request.use(
   },
 );
 
-// Interceptor de Response - Manejar errores globalmente
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
@@ -32,7 +29,6 @@ apiClient.interceptors.response.use(
   (error) => {
     console.error("❌ Response Error:", error);
 
-    // Manejar errores específicos
     if (error.response) {
       const { status, data } = error.response;
 

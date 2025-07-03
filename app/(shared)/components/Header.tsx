@@ -15,7 +15,7 @@ const Header = () => {
     logout();
     router.push("/login");
   };
-  console.log("RONCAAAAA", isAuthenticated, user);
+
   return (
     <header className="bg-background-light shadow-sm dark:bg-black">
       <div className="flex h-16 items-center justify-between px-6">
