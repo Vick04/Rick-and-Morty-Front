@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import Button from "@/app/(shared)/components/Button";
 import Text from "@/app/(shared)/components/Text";
-import { Character } from "@/app/home/types/Character";
+import { Character } from "@/app/(shared)/types/Character";
 
 const Row = ({ label, value }: { label: string; value: string }) => {
   return (

@@ -8,7 +8,7 @@ import { apiCharacter } from "@/app/home/routes";
 import { usePagination } from "@/app/(shared)/hooks/usePagination";
 import Paginator from "@/app/(shared)/components/Paginator";
 import IdCard from "@/app/home/components/IdCard";
-import { Character } from "@/app/home/types/Character";
+import { Character } from "@/app/(shared)/types/Character";
 import Loading from "@/app/(shared)/components/Loading";
 import ProtectedRoute from "@/app/(shared)/components/ProtectedRoute";
 import Text from "@/app/(shared)/components/Text";
