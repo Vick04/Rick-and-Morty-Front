@@ -1,8 +1,9 @@
 import React from "react";
-import Button from "@/app/(shared)/components/Button";
-import { PaginatedResponse } from "@/app/(shared)/types";
+
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
-import Text from "@/app/(shared)/components/Text";
+import { PaginatedResponse } from "@/types";
+import Button from "@/components/Button";
+import Text from "@/components/Text";
 
 const Paginator = ({
   data,

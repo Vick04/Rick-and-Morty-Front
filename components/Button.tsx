@@ -1,5 +1,5 @@
+import { BUTTON_COLORS } from "@/constants/theme";
 import React, { ComponentProps } from "react";
-import { BUTTON_COLORS } from "@/app/(shared)/constants/theme";
 
 type Props = ComponentProps<"button"> & {
   themeColor: keyof typeof BUTTON_COLORS;

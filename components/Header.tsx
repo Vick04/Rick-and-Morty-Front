@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 
-import Text from "@/app/(shared)/components/Text";
-import ThemeChanger from "@/app/(shared)/components/ThemeChanger";
-import Button from "@/app/(shared)/components/Button";
-import { useAuth } from "@/app/(shared)/hooks/useAuth";
+import { useAuth } from "@/contexts/AuthContext";
+import Text from "@/components/Text";
+import ThemeChanger from "@/components/ThemeChanger";
+import Button from "@/components/Button";
 
 const Header = () => {
   const { user, isAuthenticated, logout } = useAuth();

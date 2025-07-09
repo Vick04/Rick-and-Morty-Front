@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { api } from "@/app/(shared)/lib/axios";
-import { PaginatedResponse, PaginationParams } from "@/app/(shared)/types";
+import api from "@/lib/axios";
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { PaginatedResponse, PaginationParams } from "@/types";
 
 export const usePagination = <T>(
   key: string | readonly unknown[],
@@ -27,6 +27,15 @@ export const usePagination = <T>(
     setCurrentPage(page || "");
   }, []);
 
+  const goToFirstPage = useCallback(() => {
+    let url = new URL(currentPage);
+    let params = new URLSearchParams(url.search);
+
+    params.set("page", "1");
+
+    setCurrentPage(url.toString());
+  }, []);
+
   const currentPageNumber = useMemo(() => {
     const urlObj = new URL(currentPage);
     const params: Record<string, string> = {};
@@ -48,6 +57,7 @@ export const usePagination = <T>(
     data,
     isFetching,
     isLoading,
+    goToFirstPage,
     moveToPage,
     refetch,
   };

@@ -4,15 +4,14 @@ import { useCallback, useEffect, useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { Form, Formik, FormikHelpers } from "formik";
 
-import { apiCharacter } from "@/app/home/routes";
-import { usePagination } from "@/app/(shared)/hooks/usePagination";
-import Paginator from "@/app/(shared)/components/Paginator";
+import { apiCharacter } from "@/api/routes";
+import { usePagination } from "@/hooks/usePagination";
+import { Character } from "@/types/Character";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import Input from "@/components/fields/Input";
+import Paginator from "@/components/Paginator";
+import Loading from "@/components/Loading";
 import IdCard from "@/app/home/components/IdCard";
-import { Character } from "@/app/(shared)/types/Character";
-import Loading from "@/app/(shared)/components/Loading";
-import ProtectedRoute from "@/app/(shared)/components/ProtectedRoute";
-import Text from "@/app/(shared)/components/Text";
-import Input from "@/app/(shared)/components/fields/Input";
 
 const HomePage = () => {
   const [input, setInput] = useState("");
@@ -22,6 +21,7 @@ const HomePage = () => {
     data,
     isFetching,
     isLoading,
+    goToFirstPage,
     moveToPage,
     refetch,
   } = usePagination<Character>("CharactersList", apiCharacter, { name: input });
@@ -45,6 +45,7 @@ const HomePage = () => {
 
   const handleSubmit = useCallback((values: typeof initialValues) => {
     setInput(values.search);
+    goToFirstPage();
   }, []);
 
   useEffect(() => {

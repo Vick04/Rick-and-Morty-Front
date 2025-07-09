@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { getStoredToken } from "@/app/(shared)/lib/jwt-mock";
+import { getStoredToken } from "@/lib/jwt-mock";
 
 export const apiClient: AxiosInstance = axios.create({
   timeout: 10000,

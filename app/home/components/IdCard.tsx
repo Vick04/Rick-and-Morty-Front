@@ -1,7 +1,8 @@
 import React, { memo } from "react";
-import Button from "@/app/(shared)/components/Button";
-import Text from "@/app/(shared)/components/Text";
-import { Character } from "@/app/(shared)/types/Character";
+
+import Text from "@/components/Text";
+import { Character } from "@/types/Character";
+import Button from "@/components/Button";
 
 const Row = ({ label, value }: { label: string; value: string }) => {
   return (
@@ -41,7 +42,7 @@ const IdCard = ({
     <div
       className={`${!activated && "opacity-25"} grid grid-cols-12 gap-2 rounded-2xl border-2 border-neutral-500 bg-white p-4 dark:bg-neutral-300`}
     >
-      <img className="col-span-12 text-center" src={image} />
+      <img className="col-span-12 text-center" src={image} alt="Picture" />
       <Text
         className="col-span-12 text-center"
         themeColor="default"

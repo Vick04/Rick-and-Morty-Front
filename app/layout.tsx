@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 
 import "@/styles/globals.css";
-import Header from "@/app/(shared)/components/Header";
-import Footer from "@/app/(shared)/components/Footer";
-import { QueryProvider } from "@/app/(shared)/components/QueryProvider";
-import { AuthProvider } from "@/app/(shared)/contexts/AuthContext";
+import { QueryProvider } from "@/components/QueryProvider";
+import { AuthProvider } from "@/contexts/AuthContext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {

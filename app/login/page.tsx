@@ -5,10 +5,10 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 
-import Button from "@/app/(shared)/components/Button";
-import Text from "@/app/(shared)/components/Text";
-import Input from "@/app/(shared)/components/fields/Input";
-import { useAuth } from "@/app/(shared)/hooks/useAuth";
+import { useAuth } from "@/contexts/AuthContext";
+import Input from "@/components/fields/Input";
+import Text from "@/components/Text";
+import Button from "@/components/Button";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),

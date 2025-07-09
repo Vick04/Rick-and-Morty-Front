@@ -1,9 +1,6 @@
 import React, { ComponentProps } from "react";
-import {
-  TEXT_COLORS,
-  TEXT_SIZES,
-  TEXT_WEIGHTS,
-} from "@/app/(shared)/constants/theme";
+
+import { TEXT_COLORS, TEXT_SIZES, TEXT_WEIGHTS } from "@/constants/theme";
 
 type Props = ComponentProps<"span"> & {
   themeColor: keyof typeof TEXT_COLORS;
